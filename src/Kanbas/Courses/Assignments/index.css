@@ -1,0 +1,86 @@
+.wd-modules,
+.wd-modules * {
+    border-radius: 0%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+.wd-modules {
+    margin: 5px;
+}
+.wd-modules > li {
+    background-color: lightgray;
+    border: 1px solid rgb(128, 128, 128) !important;
+    border-left: none !important;
+}
+.wd-modules > li > div {
+    padding: 6px;
+    border-left: 1px solid rgb(128, 128, 128) !important;
+}
+.wd-modules > li > ul > li {
+
+    padding: 5px;
+    border-top: 1px solid rgb(128, 128, 128) !important;
+    border-left: 2px solid green;
+    padding-left: 15px;
+}
+.wd-modules > li {
+    margin-bottom: 20px;
+}
+
+.list-group-item i.fa {
+    margin-top: 25px;
+    margin-right: 15px;
+}
+.list-group-item a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    text-decoration: none;
+}
+.assignment-details {
+    font-size: 0.85em;
+}
+.fa-pencil-square-o {
+    color: green;
+}
+.title {
+    font-weight: bold;
+}
+.percent-box {
+    border: 1px solid #000;
+    padding: 4px;
+    border-radius: 25px;
+
+}
+
+.wd-active a {
+    color: black !important;
+    font-weight: bold;
+}
+
+.wd-active {
+    border-left: 4px solid black !important;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.button-icon {
+    background-color: white;
+    color: black;
+    font-size: 1.1em;
+    border-color: lightgray;
+}
+.button-white {
+    background-color: white;
+    color: black;
+    font-size: 1.1em;
+    border-color: lightgray;
+}
+

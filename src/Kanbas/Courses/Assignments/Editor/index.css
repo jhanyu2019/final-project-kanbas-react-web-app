@@ -1,0 +1,65 @@
+.fa-check-circle{
+    color: green;
+    margin-right: 10px;
+}
+
+.edit-button{
+    margin-left:10px;
+    margin-top: 10px;
+    display: inline-flex;
+    background-color: lightgray;
+    padding: 5px 5px;
+    border: 1px solid lightgray;
+}
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-table td {
+    padding: 8px;
+}
+
+.form-table label {
+    display: block;
+}
+
+.form-table  td:first-child,
+.form-table  th:first-child {
+    text-align: right;
+}
+
+.form-table td:first-child {
+    width: 20%;
+}
+
+.form-table td:nth-child(2) {
+    width: 80%;
+}
+
+.form-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+.form-row.double {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row.double > div {
+    width: 48%;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .long-select {
+      width: 200px;
+    }
+
+  </style>
+</head>
+<body>
+<table>
+
+  <tr>
+    <th style="background-color: lightgray;"> <a href="/Kanbas/Settings/screen.html">Course Details</a></th>
+    <th> <a href="#">Sections</a></th>
+    <th> <a href="/Kanbas/Settings/Navigation/screen.html">Navigation </a> </th>
+    <th> <a href="#">Apps</a></th>
+    <th> <a href="#">Features Options</a></th>
+    <th> <a href="#">Integrations</a></th>
+  </tr>
+</table>
+<hr/>
+<table>
+
+
+  <tr>
+
+    <td colspan="6">
+      <h4>Course details</h4>
+
+      <table width="100%">
+        <tr>
+         <td>
+           Image:
+         </td>
+          <td> <input type="file"></td>
+        </tr>
+
+        <tr>
+          <td>Name: </td>
+          <td>CS5610 Web Development</td>
+        </tr>
+
+        <tr>
+          <td>Course Code: </td>
+          <td>CS5610</td>
+        </tr>
+
+        <tr>
+          <td>Blueprint Course: </td>
+          <td>No</td>
+        </tr>
+
+        <tr>
+          <td>Course Template:</td>
+          <td>Enable course as a course template</td>
+        </tr>
+
+        <tr>
+          <td>Time Zone: </td>
+          <td>
+            <select >
+            <option value="ET">Eastern Time (US & Canada)</option>
+          </select> </td>
+        </tr>
+
+        <tr>
+          <td>SIS ID:</td>
+          <td>CS5610</td>
+        </tr>
+
+        <tr>
+          <td>Subaccount: </td>
+          <td>CS Undergrad</td>
+        </tr>
+
+        <tr>
+          <td>Term: </td>
+          <td>202410_1Spring 2024 Semester Full Term</td>
+        </tr></br>
+
+        <tr>
+          <td>Participation: </td>
+          <td>
+            <select class="long-select">
+              <option>Term</option>
+            </select>
+            <br/>
+
+            <label for="text-fields-start"> Start: </label><br/>
+            <input type="date"
+                   id="text-fields-start"
+                   value=" "/><br/>
+            <label > End: </label><br/>
+            <input type="date"
+                   id="text-fields-end"
+                   value=" "/><br/>
+
+            <input type="checkbox" value="Restrict student from viewing course
+            before term start date"
+                   name="check-genre" id="chkbox-bsd" />
+            <label for="chkbox-bsd">Restrict student from viewing course
+              before term start date"</label>    <br/>
+
+            <input type="checkbox" value="Restrict student from viewing course
+            after term end date"
+                   name="check-genre" id="chkbox-end" />
+            <label for="chkbox-end">Restrict student from viewing course
+              after term end date"</label>    <br/>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Default due time: </td>
+          <td>
+            <select class="long-select">
+              <option value="Account default(11:59)">Account default(11:59)</option>
+            </select><br/>
+            <small>This influences the user interface for setting due dates.
+              It does not change the time due for any existing assignments.</small>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Language: </td>
+          <td>
+            <select class="long-select">
+              <option>ANot set(user-configurable, defaults to English)</option>
+            </select><br/>
+            <small>This will override any user/system language preferences.
+              This is only recommended for foreign language course.</small>
+          </td>
+        </tr>
+
+        <tr>
+          <td>File Storage: </td>
+          <td>10000 megabytes </td>
+        </tr>
+
+        <tr>
+          <td>Large Course:
+          </td>
+          <td>
+            <input type="checkbox" id="chkbox-lc" />
+            <label for="chkbox-lc" >Launch SpeedGrader Filtered by Student Group</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Grading Scheme:
+          </td>
+          <td>
+            <input type="checkbox"  id="chkbox-gs" />
+            <label for="chkbox-gs">Enable course grading scheme</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>License: </td>
+          <td>
+            <select class="long-select">
+              <option value="license-type">Private(Copyrighted) </option>
+            </select><br/>
+          </td>
+        </tr>
+
+        <tr>
+          <td> File Copyright</td>
+          <td>
+            <input type="checkbox" id="chkbox-fc"/>
+            <label for =chkbox-fc>Copyright and license information must be provided for
+              files before they are published.  </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Visibility: </td>
+          <td>
+            <small>If you need to make your course public please contact your
+              administrator/support</small></br>
+
+            <select class="long-select">
+              <option> Course</option>
+            </select><br/>
+            <input type="checkbox" id="chkbox-vis"/>
+            <label for =chkbox-vis>
+              <small>Include this course in the public course index </small></label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Format</td>
+          <td>
+            <select class="long-select">
+              <option> On-Campus</option>
+              <option> Online</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Mastery Paths</td>
+          <td>
+            <input type="checkbox" id="chkbox-mp"/>
+            <label for =chkbox-mp>
+              <small>Enable individual learning paths for students based on assessment
+              </small></label>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>Desciption</td>
+          <td>  <textarea cols="20" rows=5"></textarea></br>
+            <a href="other-page.html">more options</a>
+
+          </td>
+        </tr>
+      </table>
+
+      <br>
+
+  <table><button class="update-button">Update Course Details</button>
+  </table>
+
+
+</table>
+
+
+
+</body>
+</html>

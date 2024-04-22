@@ -1,0 +1,175 @@
+.nav-link {
+    color: red;
+}
+
+
+.fa-angle-down{
+    color:white;
+}
+.fa-graduation-cap{
+    color:white;
+}
+
+.wd-modules * {
+    border-radius: 0%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+.wd-modules {
+    margin: 5px;
+
+}
+.wd-modules > li {
+    background-color: lightgray;
+    border: 1px solid rgb(128, 128, 128) !important;
+    border-left: none !important;
+
+}
+.wd-modules > li > div {
+    padding: 6px;
+    border-left: 1px solid rgb(128, 128, 128) !important;
+
+}
+
+.wd-modules >li>div>ul>li{
+    border: 1px solid green;
+}
+
+
+
+.wd-modules > li > ul > li {
+    padding: 5px;
+    border-top: 1px solid rgb(128, 128, 128) !important;
+    border-left: 2px solid green;
+    padding-left: 10px;
+
+}
+.wd-modules > li {
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+.wd-modules > li > ul > li > ul > li {
+    padding-left: 20px;
+    border: 1px solid black;
+}
+
+
+.list-group-item{
+    font-weight: bold;
+}
+
+.btn-custom-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+
+}
+
+.button-list {
+    display: flex;
+    padding:  1.2rem 0.5rem;
+    font-size: 0.25rem;
+    flex-direction: column;
+    line-height: 1;;
+    gap: 5px;
+}
+
+.unpublish {
+    background-color: lightgray;
+    color: black;
+    line-height: 1;
+    margin-left: 0.8rem;
+}
+
+.publish {
+    background-color: seagreen;
+    color: white;
+    line-height: 1;
+}
+
+.btn-option{
+    width: 100%;
+    display: flex;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    background-color: lightgray;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.to-do, .coming-up {
+    margin-top: 20px;
+    align-items: start;
+}
+
+
+
+.task-title, .event-title {
+    font-weight: bold;
+    color:red;
+    align-items: start;
+}
+
+.task-info, .event-info {
+    display: block;
+    color: #666;
+    font-size: 0.8em;
+    margin-left: 15px;
+    align-items: start;
+}
+
+.fa-circle-info {
+    color: red;
+    margin-right: 5px;
+}
+
+
+.coming-up-btn{
+    color:red;
+    margin-top: 5px;
+}
+
+.item {
+    display: flex;
+    align-items: start;
+    font-size: 14px;
+}
+
+.item .fa-calendar{
+    color:grey;
+    margin-right: 5px;
+}
+
+
+.item .content .title {
+    font-weight: bold;
+    color: red;
+    margin-bottom: 4px;
+}
+
+.item .content .subtext {
+    color: #666;
+}
+
+.item .content .date {
+    color: #666;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

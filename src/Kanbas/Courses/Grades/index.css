@@ -1,0 +1,109 @@
+
+.table-striped thead tr {
+    background-color: blue;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+.table-striped tbody tr:nth-child(even) {
+    background-color: grey;
+}
+
+.table-striped tbody  tr:nth-of-type(2) td:nth-of-type(2)  {
+    background-color: cornflowerblue;
+}
+
+.input-icons {
+    position: relative;
+}
+
+.input-icons .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #495057;
+}
+
+.form-select {
+    padding-left: 30px;
+}
+
+.select-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.select-box {
+    flex: 1;
+}
+
+.form-select {
+    width: 100%;
+}
+
+.btn-groups-sm{
+    margin-bottom: 10px;
+}
+
+.fa-angle-down{
+    color: white;
+}
+
+.custom-import-btn {
+    background-color: #f0f0f0;
+    margin-right: 10px;
+    border-color: lightgray;
+    color:black;
+}
+
+.custom-export-btn {
+    background-color: #f0f0f0;
+    margin-right: 10px;
+    border-color: lightgray;
+    color:black;
+}
+
+.custom-setting-btn {
+    background-color: #f0f0f0;
+    border-color: lightgray;
+    color:black;
+}
+.custom-apply-filter-btn{
+    background-color: #f0f0f0;
+    width:150px;
+    border-color: lightgray;
+    color:black;
+    margin-left: 12px;
+
+}
+.table, .table th, .table td {
+    border: 1px solid black;
+}
+.table th, .table td {
+    padding: 8px;
+    text-align:center;
+}
+
+.btn{
+    margin-right: 10px;
+}
+
+.button{
+    margin-bottom: 15px;
+}
+
+.input-icons {
+    position: relative;
+}
+
+.input-icons .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #495057;
+}

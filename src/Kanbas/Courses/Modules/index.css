@@ -1,0 +1,116 @@
+.wd-modules,
+.wd-modules * {
+    border-radius: 0%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+.wd-modules {
+    margin: 5px;
+
+}
+.wd-modules > li {
+    background-color: lightgray;
+    border: 1px solid rgb(128, 128, 128) !important;
+    border-left: none !important;
+
+}
+.wd-modules > li > div {
+    padding: 6px;
+    border-left: 1px solid rgb(128, 128, 128) !important;
+
+}
+
+.wd-modules >li>div>ul>li{
+    border: 1px solid green;
+}
+
+
+
+.wd-modules > li > ul > li {
+    padding: 5px;
+    border-top: 1px solid rgb(128, 128, 128) !important;
+    border-left: 2px solid green;
+    padding-left: 10px;
+
+}
+.wd-modules > li {
+    margin-bottom: 20px;
+
+
+}
+
+.wd-modules > li > ul > li > ul > li {
+    padding-left: 20px;
+
+}
+.btn-list-modules-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    border-bottom: 1px solid lightgray;
+}
+
+.btn-list-modules {
+    display: flex;
+    color: black;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+.btn-danger {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+}
+
+.module-content{
+    margin-top: 55px;
+}
+
+
+.btn-update {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-left: 5px;
+}
+
+.btn-add,
+.btn-edit {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 5px;
+}
+
+.input-group-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group-vertical input,
+.input-group-vertical textarea {
+    margin-bottom: 10px;
+}
+
+

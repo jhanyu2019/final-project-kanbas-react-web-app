@@ -1,0 +1,150 @@
+.wd-modules,
+.wd-modules * {
+    border-radius: 0%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+.wd-modules {
+    margin: 5px;
+
+}
+.wd-modules > li {
+    background-color: lightgray;
+    border: 1px solid rgb(128, 128, 128) !important;
+    border-left: none !important;
+
+}
+.wd-modules > li > div {
+    padding: 6px;
+    border-left: 1px solid rgb(128, 128, 128) !important;
+
+}
+
+.wd-modules >li>div>ul>li{
+    border: 1px solid green;
+}
+
+
+
+.wd-modules > li > ul > li {
+    padding: 5px;
+    border-top: 1px solid rgb(128, 128, 128) !important;
+    border-left: 2px solid green;
+    padding-left: 10px;
+
+}
+.wd-modules > li {
+    margin-bottom: 20px;
+
+
+}
+
+.wd-modules > li > ul > li > ul > li {
+    padding-left: 20px;
+
+}
+
+.button-list {
+    display: flex;
+    padding:  0.5rem 0.7rem;
+    font-size: 0.25rem;
+    flex-direction: column;
+    line-height: 1;;
+    gap: 5px;
+    align-items: flex-end;
+    text-align: left;
+    width: 250px;
+}
+
+.button-list > button {
+    width: 100%;
+    background-color: lightgray;
+}
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-link{
+    color:red;
+
+}
+
+
+.to-do, .coming-up {
+    margin-top: 20px;
+
+}
+
+.task-title, .event-title {
+    font-weight: bold;
+    color:red;
+    align-items: start;
+}
+
+.task-info, .event-info {
+    display: block;
+    color: #666;
+    font-size: 0.8em;
+    margin-left: 15px;
+    align-items: start;
+}
+
+.item {
+    display: flex;
+    align-items: start;
+    font-size: 14px;
+    text-align: start;
+
+}
+.item .content .title {
+    font-weight: bold;
+    color: red;
+    margin-bottom: 4px;
+}
+
+.item .content .subtext {
+    color: #666;
+}
+
+.item .content .date {
+    color: #666;
+}
+
+.coming-up-btn{
+    color:red;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.FaCalendar{
+    margin-right: 3px;
+}
+
+
+.title {
+    color: red;
+}
+
+.course-status-container{
+    width: 250px;
+    margin-top: 50px;
+
+}
+
+.home-container{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.module-list-container{
+    flex-grow: 1;
+    margin-right: 15px;
+    margin-top: 50px;
+}
+.flex-fill {
+    flex: 1;
+}
