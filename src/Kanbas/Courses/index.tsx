@@ -12,6 +12,8 @@ import Quizzes from "./Quizzes";
 import QuizDetail from './Quizzes/Detail';
 import QuizEditor from "./Quizzes/Editor";
 import Breadcrumb from './Breadcrumb';
+import Preview from "./Quizzes/Editor/Preview";
+import NewQuestion from "./Quizzes/Editor/Questions/NewQuestion";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -50,8 +52,13 @@ function Courses({ courses }: { courses: any[]; }) {
                         <Route path="Grades" element={<Grades />} />
                         <Route path="Quizzes" element={<Quizzes />} />
                         <Route path="Quizzes/:quizId" element={<QuizDetail />} />
+
                         <Route path="Quizzes/new" element={<QuizEditor />} />
                         <Route path="Quizzes/:quizId/edit" element={<QuizEditor />} />
+                        <Route path="Quizzes/:quizId/edit/question" element={<NewQuestion />} />
+                        <Route path="Quizzes/new/question" element={<NewQuestion />} />
+                        <Route path="Quizzes/:quizId/preview" element={<Preview />} />
+                        <Route path="Quizzes/:quizId/preview/questions/:questionId" element={<Preview />} />
 
                     </Routes>
                 </div>

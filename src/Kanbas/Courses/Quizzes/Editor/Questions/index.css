@@ -1,0 +1,56 @@
+.button-group {
+    margin-top: 70px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.answer-choice button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color:darkgrey;
+}
+
+
+.add-choice-button {
+    color: red;
+    border: 2px solid white;
+    float: right;
+}
+.save-button {
+    background-color: red;
+    color: white;
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.cancel-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.label-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}

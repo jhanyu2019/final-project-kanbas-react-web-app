@@ -9,7 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React, {ChangeEvent, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 interface Quiz {
     title: string;
@@ -54,15 +55,15 @@ const initialQuizState: Quiz = {
 };
 
 const formatDateForInput = (date: Date | string): string => {
-    // Ensure that 'date' is a Date object
+
     if (typeof date === 'string') {
         date = new Date(date);
     }
 
-    // Check if 'date' is a valid Date object
+
     if (Object.prototype.toString.call(date) === "[object Date]") {
         if (isNaN(date.getTime())) {
-            // Date is not valid
+
             return '';
         } else {
             // Format the date to YYYY-MM-DD
@@ -74,17 +75,36 @@ const formatDateForInput = (date: Date | string): string => {
             return `${year}-${month}-${day}T${hours}:${minutes}`;
         }
     } else {
-        // Not a date
         return '';
     }
 };
 
 function Details({ quiz, setQuiz }: DetailsProps) {
+
     const {courseId, quizId} = useParams<{ courseId: string; quizId?: string }>();
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const {name, value} = e.target;
         setQuiz({...quiz, [name]: value});
+    };
+    const handlePointsChange = (e: ChangeEvent<HTMLInputElement>) => {
+        // Ensure we have a number and guard against negative values
+        const points = Math.max(0, Number(e.target.value));
+        setQuiz({...quiz, points: points});
+    };
+    const handleQuizTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        setQuiz({...quiz, quizType: e.target.value as Quiz['quizType']});
+    };
+    const handleAssignmentGroupChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        setQuiz({...quiz, assignmentGroup: e.target.value as Quiz['assignmentGroup']});
+    };
+    const handleTextChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setQuiz(prevQuiz => ({ ...prevQuiz, [name]: value }));
+    };
+
+    const handleDescriptionChange = (value: string) => {
+        setQuiz(prevQuiz => ({ ...prevQuiz, description: value }));
     };
 
     return (
@@ -94,56 +114,32 @@ function Details({ quiz, setQuiz }: DetailsProps) {
                 <input
                     type="text"
                     id="quizTitle"
+                    name="title"
                     placeholder="Unnamed Quiz"
                     value={quiz.title}
-                    onChange={e => setQuiz({...quiz, title: e.target.value})}
+                    onChange={handleTextChange}
                 />
             </div>
 
             {/* Quiz Instructions */}
             <div className="quiz-instructions">
                 <label htmlFor="quizInstructions">Quiz Instructions:</label>
-                {/* Toolbar */}
-                <div className="toolbar">
-                    <div className="toolbar-row">
-                        <span>Edit</span>
-                        <span>View</span>
-                        <span>Insert</span>
-                        <span>Format</span>
-                        <span>Tools</span>
-                        <span>Table</span>
-                    </div>
-                    <div className="toolbar-row">
-                        <select>
-                            <option>12pt</option>
-                            <option>14pt</option>
-                            {/* more options */}
-                        </select>
-                        <select>
-                            <option>Paragraph</option>
-                            <option>Heading 1</option>
-
-                        </select>
-                        |
-                        <span className="toolbar-icon"><FontAwesomeIcon icon={faBold}/></span>
-                        <span className="toolbar-icon"><FontAwesomeIcon icon={faItalic}/></span>
-                        <span className="toolbar-icon"><FontAwesomeIcon icon={faUnderline}/></span>
-                        <span className="toolbar-icon"> <FontAwesomeIcon icon={faLink}/></span>
-                        <span className="toolbar-icon"><FontAwesomeIcon icon={faPencil}/></span>
-                        <span className="toolbar-icon"><FontAwesomeIcon icon={faTextHeight}/></span>
-                        |
-                        <span><FontAwesomeIcon icon={faEllipsisV}/></span>
-
-
-                    </div>
-
+                <div className="toolbar-row">
+                    <span>Edit</span>
+                    <span>View</span>
+                    <span>Insert</span>
+                    <span>Format</span>
+                    <span>Tools</span>
+                    <span>Table</span>
                 </div>
-                <textarea
-                    id="quizInstructions"
+                <ReactQuill
+
+                    theme="snow"
                     value={quiz.description}
-                    onChange={e => setQuiz({...quiz, description: e.target.value})}
-                ></textarea>
+                    onChange={handleDescriptionChange}
+                />
             </div>
+
             <div className="toolbar-container">
                 <div className="toolbar">
   <span className="toolbar-item">
@@ -168,7 +164,7 @@ function Details({ quiz, setQuiz }: DetailsProps) {
                     <select
                         id="quizType"
                         value={quiz.quizType}
-                        onChange={e => setQuiz({...quiz, quizType: e.target.value as Quiz['quizType']})}
+                        onChange={handleQuizTypeChange}
                     >
                         <option value="Graded Quiz">Graded Quiz</option>
                         <option value="Practice Quiz">Practice Quiz</option>
@@ -182,10 +178,7 @@ function Details({ quiz, setQuiz }: DetailsProps) {
                     <select
                         id="assignmentGroup"
                         value={quiz.assignmentGroup}
-                        onChange={e => setQuiz({
-                            ...quiz,
-                            assignmentGroup: e.target.value as Quiz['assignmentGroup']
-                        })}
+                        onChange={handleAssignmentGroupChange}
                     >
                         <option value="Quizzes">Quizzes</option>
                         <option value="Exams">Exams</option>
@@ -274,7 +267,7 @@ function Details({ quiz, setQuiz }: DetailsProps) {
                         </label>
                     </div>
 
-                    {/* Webcam Required Option */}
+
                     <div className="option">
                         <label>
                             <input
@@ -286,7 +279,7 @@ function Details({ quiz, setQuiz }: DetailsProps) {
                         </label>
                     </div>
 
-                    {/* Lock Questions After Answering Option */}
+
                     <div className="option">
                         <label>
                             <input
@@ -307,15 +300,15 @@ function Details({ quiz, setQuiz }: DetailsProps) {
                     <td>
                         <div className="form-container">
                             <div className="form-row">
-                                <label>Point</label>
+                                <label>Points:</label>
                                 <div className="assign-to-input">
                                     <input
-                                        type="text"
-                                        value=""
-                                        readOnly
+                                        id="quizPoints"
+                                        type="number"
+                                        value={quiz.points}
+                                        onChange={handlePointsChange}
                                         className="form-control"
                                     />
-
                                 </div>
                             </div>
                             <div className="form-row">

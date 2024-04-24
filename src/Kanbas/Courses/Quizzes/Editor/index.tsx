@@ -16,7 +16,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import "./index.css";
 
- interface Quiz {
+interface Quiz {
     title: string;
     description: string;
     quizType: 'Graded Quiz' | 'Practice Quiz' | 'Graded Survey' | 'Ungraded Survey';
@@ -55,7 +55,6 @@ const initialQuizState: Quiz = {
 };
 
 const formatDateForInput = (date: Date | string): string => {
-    // Ensure that 'date' is a Date object
     if (typeof date === 'string') {
         date = new Date(date);
     }
@@ -63,7 +62,6 @@ const formatDateForInput = (date: Date | string): string => {
     // Check if 'date' is a valid Date object
     if (Object.prototype.toString.call(date) === "[object Date]") {
         if (isNaN(date.getTime())) {
-            // Date is not valid
             return '';
         } else {
             // Format the date to YYYY-MM-DD
@@ -75,7 +73,6 @@ const formatDateForInput = (date: Date | string): string => {
             return `${year}-${month}-${day}T${hours}:${minutes}`;
         }
     } else {
-        // Not a date
         return '';
     }
 };
@@ -122,6 +119,26 @@ function QuizEditor() {
         }
 
     };
+    const saveAndPublishQuiz = async () => {
+        if (!courseId) {
+            console.error('No courseId provided');
+            return;
+        }
+
+        try {
+            if (!quizId || quizId === 'new') {
+                const newQuiz = await client.createQuizByCourseId(quiz, courseId);
+                await client.updateQuizPublishStatus(courseId, newQuiz.id, true);
+            } else {
+                await client.updateExistingQuiz(quizId, courseId, quiz);
+                await client.updateQuizPublishStatus(courseId, quizId, true);
+            }
+            navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
+        } catch (error) {
+            console.error('Failed to save or publish quiz:', error);
+        }
+    };
+
 
     useEffect(() => {
         fetchQuiz();
@@ -132,23 +149,26 @@ function QuizEditor() {
             {/* Navigation Tabs */}
             <nav className="quiz-nav">
                 <ul>
-                    <li>
+                    <li className={currentTab === 'Details' ? 'tab active' : 'tab'}>
                         <button onClick={() => setCurrentTab('Details')}>Details</button>
                     </li>
-                    <li className="active">
+                    <li className={currentTab === 'Questions' ? 'tab active' : 'tab'}>
                         <button onClick={() => setCurrentTab('Questions')}>Questions</button>
                     </li>
                 </ul>
             </nav>
 
             <div className="quiz-content">
-                {currentTab === 'Details' && <Details quiz={quiz} setQuiz={setQuiz} />}
-                {currentTab === 'Questions' && <Questions />}
+                {currentTab === 'Details' && <Details quiz={quiz} setQuiz={setQuiz}/>}
+                {currentTab === 'Questions' && <Questions/>}
 
-                {/* Action Buttons */}
+
                 <div className="quiz-actions">
                     <button type="button" onClick={saveQuiz}>
                         Save Quiz
+                    </button>
+                    <button type="button" onClick={saveAndPublishQuiz} className="btn btn-success">
+                        Save and Publish
                     </button>
                     <button type="button" onClick={() => navigate(`/Kanbas/Courses/${courseId}/Quizzes`)}>
                         Cancel

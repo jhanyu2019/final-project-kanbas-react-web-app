@@ -31,6 +31,28 @@ const determineStatus = (dueDateString: string) => {
     }
 };
 
+
+const toggleQuizPublishStatus = async (
+    courseId: string,
+    quizId: string,
+    isCurrentlyPublished: boolean,
+    setQuizzes: React.Dispatch<React.SetStateAction<Quiz[]>>,
+    quizzes: Quiz[]
+) => {
+    if (!courseId) {
+        console.error('courseId is undefined');
+        return;
+    }
+
+    try {
+        await client.updateQuizPublishStatus(courseId, quizId, !isCurrentlyPublished);
+        setQuizzes(quizzes.map((quiz: Quiz) => quiz.id === quizId ? { ...quiz, published: !isCurrentlyPublished } : quiz));
+    } catch (error) {
+        console.error('Error toggling publish status:', error);
+    }
+};
+
+
 interface Quiz {
     id: string;
     title: string;
@@ -39,6 +61,7 @@ interface Quiz {
     points: number;
     questionCount: number;
     published: boolean;
+    isPublished: boolean;
 }
 function Quizzes() {
     const [quizzes, setQuizzes] = useState<Quiz[]>([]);
@@ -56,12 +79,43 @@ function Quizzes() {
     const handleAddQuiz = () => {
         navigate(`/Kanbas/Courses/${courseId}/Quizzes/new`);
     };
-
+    const handleDeleteQuiz = async (quizId: string) => {
+        if (courseId) {
+            try {
+                await client.deleteQuiz(courseId, quizId);
+                setQuizzes(quizzes.filter(quiz => quiz.id !== quizId));
+            } catch (error) {
+                console.error('Error deleting quiz:', error);
+            }
+        } else {
+            console.error('courseId is undefined');
+        }
+    };
     const fetchQuizzes = async () => {
         if (courseId) {
             try {
                 const quizzesData = await client.findQuizzesByCourseId(courseId);
-                setQuizzes(quizzesData);
+                const updatedQuizzes = await Promise.all(
+                    quizzesData.map(async (quiz: Quiz) => {
+                        const questions = await client.findQuestionsByQuizId(courseId, quiz.id);
+                        let points = 0;
+                        for (const question of questions) {
+                            console.log(`Question Points: ${question.points}`);
+                            points += question.points;
+                        }
+                        console.log(`Total Points for Quiz ${quiz.title}: ${points}`);
+                        await client.updateQuizPoints(courseId, quiz.id, points);
+                        await client.updateQuizQuestionCount(courseId,quiz.id,questions.length);
+
+                        return {
+                            ...quiz,
+                            published: quiz.isPublished,
+                            points,
+                            questionCount: questions.length,
+                        };
+                    })
+                );
+                setQuizzes(updatedQuizzes);
             } catch (error) {
                 console.error('Error fetching quizzes:', error);
             }
@@ -102,7 +156,12 @@ function Quizzes() {
                     </div>
                 </div>
                 {quizzes.map((quiz) => (
-                    <div key={quiz.id} className="list-group-item">
+                    <div key={quiz.id} className="list-group-item"
+                         onContextMenu={(event) => {
+                             event.preventDefault();
+                             handleContextMenu(quiz.id);
+                         }}>
+
                         <div className="d-flex justify-content-between">
                             <div>
                                 <Link to={`/Kanbas/Courses/${courseId}/Quizzes/${quiz.id}`}>
@@ -120,21 +179,21 @@ function Quizzes() {
                                     style={{ cursor: "pointer" }}
                                 />
                                 {quiz.published ? (
-                                    <FaCheckCircle className="text-success" />
+                                    <FaCheckCircle className="text-success" onClick={() => toggleQuizPublishStatus(courseId!, quiz.id, true, setQuizzes, quizzes)} style={{ cursor: "pointer" }} />
                                 ) : (
-                                    <FaBan className="text-danger" />
+                                    <FaBan className="text-danger" onClick={() => toggleQuizPublishStatus(courseId!, quiz.id, false, setQuizzes, quizzes)} style={{ cursor: "pointer" }} />
                                 )}
                                 {activeQuizMenu === quiz.id && (
                                     <div className="quiz-context-menu">
                                         <button onClick={() => handleEditQuiz(quiz.id)}>
                                             <BsPencil/> Edit
                                         </button>
-                                        <button>
+                                        <button onClick={() => handleDeleteQuiz(quiz.id)}>
                                             <BsTrash3Fill/> Delete
                                         </button>
-                                        <button>
-                                            <FaPlusCircle/>{" "}
-                                            {quiz.published ? "Unpublish" : "Publish"}
+                                        <button
+                                            onClick={() => toggleQuizPublishStatus(courseId!, quiz.id, quiz.published, setQuizzes, quizzes)}>
+                                            <FaPlusCircle/> {quiz.published ? "Unpublish" : "Publish"}
                                         </button>
                                     </div>
                                 )}
